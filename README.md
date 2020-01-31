@@ -21,6 +21,6 @@ https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fb
 
 ### Première étape : visualisation simple des données
 
-- Nombre de morts par type de catastrophe naturelle : https://blockbuilder.org/glegall7/22dc556512e51ce02eadf9a484e9d3f0?fbclid=IwAR0OEfaCcwBUbJgotSwAg9MXb5KRjAYGtD2wqeTSw93ImIUCjO4rgXUPvCE
+- Nombre de morts par type de catastrophe naturelle : https://blockbuilder.org/jean-thomas-beaudoin/5b0a19c2fb3fae3c15426987348a34a1
 - Nombre de catastrophe naturelle par type : https://blockbuilder.org/glegall7/49d789868675ce9510521df1e3613a12?fbclid=IwAR2Vkatyi9xn1pP53f9QEyAT1stSRRsyEmDEe-nWnoEaj0QPCeBHyCkBSqo
 - Nombre de personnes affectées par type de catastrophe naturelle : https://blockbuilder.org/jean-thomas-beaudoin/402daf723bf089b53559f2378d38cc1b
