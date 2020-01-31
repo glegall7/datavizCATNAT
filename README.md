@@ -1,8 +1,25 @@
-## Data Visualisation sur les catastrophes naturelles - CATNAT
+# Data Visualisation sur les catastrophes naturelles - CATNAT
 
 Jean-Thomas BEAUDOIN
 Guillaume LE GALL
 Donatien VAAST
+
+
+## Mise en place du projet
+
+### Sujet
+Les catastrophes naturelles étant liées au réchauffement climatique, il pourrait être intéressant de trouver une visualisation de celles-ci.
+
+### Données nécessaires
+Données sur les catastrophes naturelles permettant de les localiser spatialement, temporellement et d’identifier le type des catastrophes naturelles étudiées. Nous avons déjà récupéré près de 8000 catastrophes naturelles avec leurs dates, lieux (plus ou moins précis), le type et les dégâts (humains et matériels). Les données seront a consolider car tout n’est pas présent.
+https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fbclid=IwAR24TJ7bmZGuQwtOgNeGste324N2IfJH7SNLaSVnlA5paKqjdhG-fT2SUeM
+
+### Idées de questions auxquelles on pourrait répondre
+- Où sont situées les catastrophes naturelles qui ont causées le plus de dégâts  ?
+- Quels sont les types de catastrophes naturelles par région du globe ?
+
+
+## Réalisation
 
 ### Première étape : visualisation simple des données
 
