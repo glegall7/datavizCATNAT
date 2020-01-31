@@ -1,8 +1,6 @@
 # Data Visualisation sur les catastrophes naturelles - CATNAT
 
-Jean-Thomas BEAUDOIN
-Guillaume LE GALL
-Donatien VAAST
+Jean-Thomas BEAUDOIN / Guillaume LE GALL / Donatien VAAST
 
 
 ## Mise en place du projet
