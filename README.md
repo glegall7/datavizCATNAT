@@ -1,37 +1,10 @@
-## Welcome to GitHub Pages
+## Data Visualisation sur les catastrophes naturelles - CATNAT
 
-You can use the [editor on GitHub](https://github.com/glegall7/datavizCATNAT/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Jean-Thomas BEAUDOIN
+Guillaume LE GALL
+Donatien VAAST
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Première étape : visualisation simple des données
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/glegall7/datavizCATNAT/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Nombre de mort par type de catastrophe naturelle : https://blockbuilder.org/glegall7/22dc556512e51ce02eadf9a484e9d3f0?fbclid=IwAR0OEfaCcwBUbJgotSwAg9MXb5KRjAYGtD2wqeTSw93ImIUCjO4rgXUPvCE
+- Nombre de catastrophe naturelle par type : https://blockbuilder.org/glegall7/49d789868675ce9510521df1e3613a12?fbclid=IwAR2Vkatyi9xn1pP53f9QEyAT1stSRRsyEmDEe-nWnoEaj0QPCeBHyCkBSqo
