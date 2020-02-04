@@ -1,0 +1,180 @@
+
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.no-margin-bottom {
+	margin-bottom:0 !important;
+}
+
+.no-margin-top {
+	margin-top:0 !important;
+}
+
+.no-margin-top-bottom {
+	margin-top:0 !important;
+	margin-bottom:0 !important;
+}
+
+.no-padding-bottom {
+	padding-bottom:0 !important;
+}
+
+.no-padding-top {
+	margin-top:0 !important;
+}
+
+.no-padding-top-bottom {
+	padding-top:0 !important;
+	padding-bottom:0 !important;
+}
+
+.fullheight {
+	height:100%;
+}
+
+.no-border {
+	border:0 !important;
+}
+
+
+DIV.table 
+{
+    display:table;
+}
+FORM.tr, DIV.tr
+{
+    display:table-row;
+}
+SPAN.td
+{
+    display:table-cell;
+}
+
+.bluelv, .DIR, .Masculin
+{
+	background-color:#688dc2;
+}
+
+.roselv, .LIG, .Feminin
+{
+	background-color:#d6b9f1;
+}
+
+.greenlv, .Mixte
+{
+	background-color:#40a399;
+}
+
+.turquoiselv
+{
+	background-color:#acdada;
+}
+
+.blue2lv
+{
+	background-color:#33567c;
+	color:white;
+}
+
+.rose2lv, .Maquillage
+{
+	background-color:#94688a;
+}
+
+.purplelv, .Parfum
+{
+	background-color:#7454c4;
+}
+
+.greenlv2, .Autre
+{
+	background-color:#bfdaaf;
+}
+
+.greenlv4
+{
+	background-color:#7fdbb6;
+}
+
+.greenlv3
+{
+	font-size:20px !important;
+}
+
+.rond
+{
+	border:2px solid #58d09f;
+	background-color:white;
+	color:#58d09f;
+}
+.blue2lvtext
+{
+	color:#33567c !important;
+}
+
+.link
+{
+	color:#7454c4 !important;
+	font-weight:bold;
+}
+
+.VAL 
+{
+	background-color:#4CAF50;
+}
+
+.REF, .ANL
+{
+	background-color:#F44336;
+}
+
+.ATT
+{
+	background-color:#ff9800;
+}
+
+.message
+{
+	color:#40a399;
+	border:2px solid #40a399;
+	font-weight:bold;
+	background-color:rgb(64,163,153,0.2);
+	border-radius:4px;
+	text-align:center;
+}
+
+.error
+{
+	color:#F44336;
+	border:2px solid #F44336;
+	font-weight:bold;
+	background-color:rgb(244,67,54,0.2);
+	border-radius:4px;
+	text-align:center;
+}
+
+.sousmenumobile 
+{
+	display:none !important;
+}
+
+.hidden {
+	display:none !important;
+}
+
+.lineheightnormal li {
+	line-height:inherit;
+}
+
+.no-margin{
+	margin:0 !important;
+}
+
+html{
+	font-family:Calibri;
+}
