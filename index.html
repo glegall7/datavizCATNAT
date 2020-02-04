@@ -26,10 +26,40 @@
   </div>
    <div class="row">
    			<div class="col s2 orange lighten-2">
-   				
+   				<form action="#">
+			    <p>
+			      <label>
+			        <input type="checkbox" class="filled-in" checked />
+			        <span class="white-text">World map</span>
+			      </label>
+			    </p>
+			    <p>
+			      <label>
+			        <input type="checkbox" class="filled-in"  />
+			        <span class="white-text">Connection graph</span>
+			      </label>
+			    </p>
+			    <p>
+			      <label>
+			        <input type="checkbox" class="filled-in"  />
+			        <span class="white-text">Tree Map</span>
+			      </label>
+			    </p>
+			    
+			  </form>
    			</div>
-   			<div class="col s8" id="svgcontainer">
-   				
+   			<div class="col s8" >
+   				<div id="svgcontainer"></div>
+   				<div class="row">
+   					<div class="col s1 offset-s2"> <img src="drought.png" width="100%"/></div>
+   					<div class="col s1"> <img src="earthquake.png" width="100%"/></div>
+   					<div class="col s1"> <img src="extremetemperature.png" width="100%" /></div>
+   					<div class="col s1"> <img src="fog.png" width="100%" style="border:2px solid black;border-radius:50%"/></div>
+   					<div class="col s1"> <img src="impact.png" width="100%"/></div>
+   					<div class="col s1"> <img src="storm.png" width="100%"/></div>
+   					<div class="col s1"> <img src="wildfire.png" width="100%"/></div>
+   					<div class="col s1"> <img src="volcano.png" width="100%"/></div>
+   				</div>
    			</div>
    			<div class="col s2" id="details">
    				
@@ -58,18 +88,20 @@
 
 <script>
 		
-  		var height = 500;
+  		var height = 430;
 		var svg = d3.select( "#svgcontainer" )
   		.append( "svg" )
 		  .attr( "height", height );
 
-    var projection = d3.geoNaturalEarth1().center([40.454071, 0]).scale(160)
+    var projection = d3.geoNaturalEarth1().center([60.454071, -10]).scale(140)
 
     var path = d3.geoPath() // d3.geo.path avec d3 version 3
                  .projection(projection);
     
     var color = d3.scaleOrdinal(d3.schemeCategory10)
 		// Load external data and boot
+		d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/couleur.csv", function(data){
+      console.log(data)
 d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
 
   
