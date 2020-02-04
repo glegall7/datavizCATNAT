@@ -120,7 +120,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
     d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/test6.csv", function(data){
       console.log(data)
       d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/couleur.csv", function(couleur){
-      
+      console.log(couleur)
       
       svg.append("g").selectAll("circle")
 		.data(data).enter()
@@ -129,7 +129,8 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
 		.attr("r", "2px")
 		.attr("fill", function (d) {
-			couleur.findIndex(d.Disater_Type);
+			console.log(d);
+			couleur.findIndex(d.Disaster_Type);
 			return color(d.Disaster_type)})
 		.style("opacity", 0.6)
 		.on("mouseover", function(d,i){ 
