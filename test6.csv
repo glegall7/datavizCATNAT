@@ -1,4 +1,4 @@
-Start date,End date,Country,ISO,Location,Latitude,Longitude,Magnitude value,Magnitude scale,Disaster_type,Disaster subtype,Associated disaster,Associated disaster2,Total deaths,Total affected,Total damage ('000 US$),Insured losses ('000 US$),Disaster name,Disaster No.,newcountry,newlatitude,newlongitude,searchcoord
+Start date,End date,Country,ISO,Location,Latitude,Longitude,Magnitude value,Magnitude_scale,Disaster_type,Disaster subtype,Associated disaster,Associated disaster2,Total deaths,Total affected,Total damage ('000 US$),Insured losses ('000 US$),Disaster name,Disaster No.,newcountry,newlatitude,newlongitude,searchcoord
 1900-07-12 00:00:00,1900-07-12 00:00:00,Turkey,TUR,"KARS,KARAKURT,KAGIZMAN,DIGOR",40.3,43.1,5.9,Richter,Earthquake,Ground movement,--,--,140.0,0.0,0.0,0.0,,1900-0009,Turkey,40.3,43.1,0
 1901-08-10 00:00:00,1901-08-10 00:00:00,Japan,JPN,Sanriku,40.5,142.5,7.9,Richter,Earthquake,Tsunami,Tsunami/Tidal wave,--,18.0,24.0,0.0,0.0,,1901-0004,Japan,40.5,142.5,0
 1902-02-13 00:00:00,1902-02-13 00:00:00,Azerbaijan,AZE,Semacha,40.7,48.6,6.9,Richter,Earthquake,Ground movement,--,--,86.0,17540.0,0.0,0.0,,1902-0013,Azerbaijan,40.7,48.6,0
