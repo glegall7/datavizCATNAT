@@ -30,7 +30,7 @@
    			<div class="col s3">
    				
    			</div>
-   			<div class="col s6">
+   			<div class="col s6" id="svgcontainer">
    				
    			</div>
    			<div class="col s3">
@@ -62,7 +62,7 @@
 		var width = 900,
   		  height = 500;
 
-		var svg = d3.select( "body" )
+		var svg = d3.select( "#svgcontainer" )
   		.append( "svg" )
 		  .attr( "width", width )
 		  .attr( "height", height );
