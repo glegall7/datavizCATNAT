@@ -100,8 +100,7 @@
     
     var color = d3.scaleOrdinal(d3.schemeCategory10)
 		// Load external data and boot
-		d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/couleur.csv", function(data){
-      console.log(data)})
+		
 d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
 
   
@@ -120,6 +119,8 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 })
     d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/test6.csv", function(data){
       console.log(data)
+      d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/couleur.csv", function(couleur){
+      
       
       svg.append("g").selectAll("circle")
 		.data(data).enter()
@@ -127,7 +128,9 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		.attr("cx", function (d) {return projection([d.newlongitude,d.newlatitude])[0]; })
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
 		.attr("r", "2px")
-		.attr("fill", function (d) {return color(d.Disaster_type)})
+		.attr("fill", function (d) {
+			couleur.findIndex(d.Disater_Type);
+			return color(d.Disaster_type)})
 		.style("opacity", 0.6)
 		.on("mouseover", function(d,i){ 
     			d3.selectAll("circle")
@@ -141,6 +144,8 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
           elm=document.getElementById("details")
           elm.innerHTML=''   ;   
     })
+    
+      })
     })
     
   </script>
