@@ -47,19 +47,19 @@
 				    </p>
 			    <p>
 			      <label>
-			        <input type="checkbox" class="filled-in" onclick="zoom(-60,30,350)"/>
+			        <input type="checkbox" class="filled-in" onclick="zoom(-60,30,350,'North America')"/>
 			        <span class="white-text">North America</span>
 			      </label>
 			    </p>
 			    <p>
 			      <label>
-			        <input type="checkbox" class="filled-in" onclick="zoom(30,48,670)" />
+			        <input type="checkbox" class="filled-in" onclick="zoom(30,48,670, 'Europe')" />
 			        <span class="white-text">Europe</span>
 			      </label>
 			    </p>
 			    <p>
 			      <label>
-			        <input type="checkbox" class="filled-in" onclick="zoom(30,-9,300)" />
+			        <input type="checkbox" class="filled-in" onclick="zoom(30,-9,300,'Africa')" />
 			        <span class="white-text">Africa</span>
 			      </label>
 			    </p>
@@ -172,17 +172,16 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
     })
 
     function change(elm){
-			console.log(elm)
 			var circles =d3.selectAll("circle")
 							.filter(function(d) { return d.Disaster_type == elm })
 							.style("opacity", 1)
-							.attr("r", "3px")
+							.attr("r", 3)
 			d3.selectAll("circle")
 							.filter(function(d) { return d.Disaster_type != elm })
 							.style("opacity", .3)
-							.attr("r", "2px")
+							.attr("r", 2)
 		}
-	function zoom(a,b,c){
+	function zoom(a,b,c,continent){
 		
 		path = path.projection(projection.center([a,b]).scale(c));
 		d3.selectAll("path")
@@ -192,7 +191,16 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		svg.selectAll("circle")
 		.attr("cx", function (d) {return projection([d.newlongitude,d.newlatitude])[0]; })
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
-		.attr("r", "2px")
+		.attr("r", 2)
+		
+		d3.selectAll("circle")
+							.filter(function(d) { return d.continent == continent })
+							.style("opacity", 0.7)
+							.attr("r", 4)
+			d3.selectAll("circle")
+							.filter(function(d) { return d.continent != continent })
+							.style("opacity", .1)
+							.attr("r", 2)
 	}
   </script>
   <style>
