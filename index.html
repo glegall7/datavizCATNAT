@@ -80,6 +80,7 @@
    					<div class="col s1"> <img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></div>
    				</div>
    				<div id="test-slider"></div>
+   				<div id="valuesholder"></div>
    			</div>
    			<div class="col s2 main" id="details">
    				
@@ -111,11 +112,22 @@
   <script src="init.js"></script>
   <script src="wNumb.js"></script>
 <script>
+var debut=1900
+var fin=2020
+function doSomething(values, handle, unencoded, tap, positions) {
+    // values: Current slider values (array);
+    // handle: Handle that caused the event (number);
+    // unencoded: Slider values without formatting (array);
+    // tap: Event was caused by the user tapping the slider (boolean);
+    // positions: Left offset of the handles (array);
+}
 
 function filterPips(value, type) {
    	console.log(value%10==0);
     return value % 10==0 ? 2 : 0;
 }
+
+var valuesholder = document.getElementById('valuesholder');
 
 var slider = document.getElementById('test-slider');
 noUiSlider.create(slider, {
@@ -126,8 +138,8 @@ noUiSlider.create(slider, {
  orientation: 'horizontal', // 'horizontal' or 'vertical'
  
  range: {
-   'min': 1900,
-   'max': 2020
+   'min': debut,
+   'max': fin
  },
    format: wNumb({
      decimals: 0
@@ -141,16 +153,27 @@ noUiSlider.create(slider, {
        })
    }
 });
+slider.noUiSlider.on('update', function (values) {
+    valuesholder.innerHTML = values.join(' : ');
+});
+
+slider.noUiSlider.on('end', function(values,handle,unencoded){
+	console.log(unencoded)
+	debut=unencoded[0]
+	fin=unencoded[1]
+	filterpoints()
+	
+});
 </script>
 <script>
 		
-  		var height = 430;
+  		var height = 400;
 		var svg = d3.select( "#svgcontainer" )
   		.append( "svg" )
 		  .attr( "height", height );
 
     var projection = d3.geoNaturalEarth1();
-    projection.center([60.454071, -10]).scale(140)
+    projection.center([60.454071, -13]).scale(140)
 
     var path = d3.geoPath() // d3.geo.path avec d3 version 3
                  .projection(projection);
@@ -255,7 +278,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 				.attr("r", 2)
 		if(zonegeoactive.length==0 && optiontypeactive.length>0){
 			//centrage carte monde
-			path = path.projection(projection.center([60.454071, -10]).scale(140));
+			path = path.projection(projection.center([60.454071, -13]).scale(140));
 					d3.selectAll("path")
 						.transition()
 				      	.duration(0)
@@ -277,7 +300,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 				      	.attr("d", path);
 			for (var i = 0; i < zonegeoactive.length; i++) {
 				d3.selectAll("circle")
-				.filter(function(d) { return d.continent == zonegeoactive[i] })
+				.filter(function(d) { return (d.continent == zonegeoactive[i])})
 				.style("opacity", 0.8)
 				.attr("r", 3)
 			}
@@ -302,7 +325,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		}
 		if(zonegeoactive.length==0 && optiontypeactive.length==0){
 			//centrage carte monde
-			path = path.projection(projection.center([60.454071, -10]).scale(140));
+			path = path.projection(projection.center([60.454071, -13]).scale(140));
 					d3.selectAll("path")
 						.transition()
 				      	.duration(0)
