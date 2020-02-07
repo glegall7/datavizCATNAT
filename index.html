@@ -12,6 +12,7 @@
 		  <!-- CSS  -->
 		  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		  <link href="materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		  <link href="nouislider.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		  
 		  <script src="https://d3js.org/d3.v4.min.js"></script>
 		  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -25,7 +26,7 @@
   </nav>	  
   </div>
    <div class="row">
-   			<div class="col s2 orange lighten-2">
+   			<div class="col s2 main orange lighten-2">
    				<form action="#">
    				<p>
 				      <label>
@@ -66,7 +67,7 @@
 			    
 			  </form>
    			</div>
-   			<div class="col s8" >
+   			<div class="col s8 main" >
    				<div id="svgcontainer"></div>
    				<div class="row">
    					<div class="col s1 offset-s2"> <img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></div>
@@ -78,8 +79,9 @@
    					<div class="col s1"> <img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></div>
    					<div class="col s1"> <img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></div>
    				</div>
+   				<div id="test-slider"></div>
    			</div>
-   			<div class="col s2" id="details">
+   			<div class="col s2 main" id="details">
    				
    			</div>
    		
@@ -103,7 +105,43 @@
       </div>
     </div>
   </footer>
+ <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="materialize.js"></script>
+  <script src="nouislider.js"></script>
+  <script src="init.js"></script>
+  <script src="wNumb.js"></script>
+<script>
 
+function filterPips(value, type) {
+   	console.log(value%10==0);
+    return value % 10==0 ? 2 : 0;
+}
+
+var slider = document.getElementById('test-slider');
+noUiSlider.create(slider, {
+ start: [1900, 2019],
+ 
+ connect: true,
+ step: 1,
+ orientation: 'horizontal', // 'horizontal' or 'vertical'
+ 
+ range: {
+   'min': 1900,
+   'max': 2020
+ },
+   format: wNumb({
+     decimals: 0
+   }),
+   pips: {
+       mode: 'steps',
+       density: 3,
+       filter: filterPips,
+       format: wNumb({
+           decimals: 0
+       })
+   }
+});
+</script>
 <script>
 		
   		var height = 430;
@@ -162,8 +200,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
           elm=document.getElementById("details")
           elm.innerHTML='<li>'+d.Country+'</li>'
     })
-    .on("mouseout", function(d) {d3.selectAll("circle")
-          .style("opacity", 1)
+    .on("mouseout", function(d) {filterpoints()
           elm=document.getElementById("details")
           elm.innerHTML=''   ;   
     })
@@ -259,7 +296,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 					d3.selectAll("circle")
 					.filter(function(d) { return (d.Disaster_type == optiontypeactive[j] && d.continent == zonegeoactive[i])})
 					.style("opacity", 0.8)
-					.attr("r", 3)
+					.attr("r", 4)
 				}
 			}
 		}
@@ -293,17 +330,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		return [lat/listecoord.length, longi/listecoord.length, scale/Math.sqrt(listecoord.length)]
 	}
 	function zoom(a,b,c,continent){
-		
-		path = path.projection(projection.center([a,b]).scale(c));
-		d3.selectAll("path")
-		.transition()
-	      	.duration(0)
-	      	.attr("d", path);
-		svg.selectAll("circle")
-		.attr("cx", function (d) {return projection([d.newlongitude,d.newlatitude])[0]; })
-		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
-		.attr("r", 2)
-		
+				
 		filterpoints()
 	}
   </script>
@@ -312,13 +339,11 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
   	width:100%}
   	g { 
   	width:100%}
-  	.col{height:600px}
+  	.main{height:600px}
   	
   </style>
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="materialize.js"></script>
-  <script src="init.js"></script>
+
     
 </body>
 
