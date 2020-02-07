@@ -203,7 +203,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		.append("circle")
 		.attr("cx", function (d) {return projection([d.newlongitude,d.newlatitude])[0]; })
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
-		.attr("r", "1px")
+		.attr("r", 2)
 		.attr("fill", function (d) {
 			var color=''
 			for (var item in couleur) {
@@ -213,17 +213,20 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 				}
 			
 			return color})
-		.style("opacity", 1)
+		.style("opacity", 0.8)
 		.on("mouseover", function(d,i){ 
-    			d3.selectAll("circle")
-          .style("opacity", .3)
+    		
           d3.select(this).style("opacity",1)
+          .attr("r", 4)
           elm=document.getElementById("details")
           elm.innerHTML='<li>'+d.Country+'</li>'
     })
-    .on("mouseout", function(d) {filterpoints()
+    .on("mouseout", function(d) {
+    		d3.select(this).style("opacity",0.8)
+          .attr("r", 2)
           elm=document.getElementById("details")
-          elm.innerHTML=''   ;   
+          elm.innerHTML=''   ;  
+    		filterpoints()
     })
     
       })
@@ -359,6 +362,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 				
 		filterpoints()
 	}
+	filterpoints()
   </script>
   <style>
   	svg { display: block;
