@@ -48,20 +48,38 @@
 				    </p>
 			    <p>
 			      <label>
-			        <input type="checkbox" class="filled-in zonegeo" name="North America" onclick="zoom(-60,30,350,'North America')"/>
+			        <input type="checkbox" class="filled-in zonegeo" name="North America" onclick="filterpoints()"/>
 			        <span class="white-text" >North America</span>
 			      </label>
 			    </p>
 			    <p>
 			      <label>
-			        <input type="checkbox" class="filled-in zonegeo" name="Europe" onclick="zoom(30,48,670, 'Europe')" />
+			        <input type="checkbox" class="filled-in zonegeo" name="South America" onclick="filterpoints()"/>
+			        <span class="white-text" >South America</span>
+			      </label>
+			    </p>
+			    <p>
+			      <label>
+			        <input type="checkbox" class="filled-in zonegeo" name="Europe" onclick="filterpoints()" />
 			        <span class="white-text"  >Europe</span>
 			      </label>
 			    </p>
 			    <p>
 			      <label>
-			        <input type="checkbox" class="filled-in zonegeo" name="Africa" onclick="zoom(30,-9,300,'Africa')" />
+			        <input type="checkbox" class="filled-in zonegeo" name="Africa" onclick="filterpoints()" />
 			        <span class="white-text" >Africa</span>
+			      </label>
+			    </p>
+			    <p>
+			      <label>
+			        <input type="checkbox" class="filled-in zonegeo" name="Asia" onclick="filterpoints()" />
+			        <span class="white-text"  >Asia</span>
+			      </label>
+			    </p>
+			    <p>
+			      <label>
+			        <input type="checkbox" class="filled-in zonegeo" name="Oceania" onclick="filterpoints()" />
+			        <span class="white-text"  >Oceania</span>
 			      </label>
 			    </p>
 			    
@@ -79,8 +97,7 @@
    					<div class="col s1"> <img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></div>
    					<div class="col s1"> <img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></div>
    				</div>
-   				<div id="test-slider"></div>
-   				<div id="valuesholder"></div>
+   				<div id="test-slider" style="color:white;"></div>
    			</div>
    			<div class="col s2 main" id="details">
    				
@@ -114,19 +131,11 @@
 <script>
 var debut=1900
 var fin=2020
-function doSomething(values, handle, unencoded, tap, positions) {
-    // values: Current slider values (array);
-    // handle: Handle that caused the event (number);
-    // unencoded: Slider values without formatting (array);
-    // tap: Event was caused by the user tapping the slider (boolean);
-    // positions: Left offset of the handles (array);
-}
 
 function filterPips(value, type) {
     return value % 10==0 ? 2 : 0;
 }
 
-var valuesholder = document.getElementById('valuesholder');
 
 var slider = document.getElementById('test-slider');
 noUiSlider.create(slider, {
@@ -152,8 +161,11 @@ noUiSlider.create(slider, {
        })
    }
 });
-slider.noUiSlider.on('update', function (values) {
-    valuesholder.innerHTML = values.join(' : ');
+var buttons =document.getElementsByClassName('noUi-touch-area')
+slider.noUiSlider.on('update', function (values, handle, unencoded, tap, positions) {
+   
+    buttons[0].innerHTML='<p style="padding:0;margin:0;margin-top:8px;margin-left:4px;">'+values[0]+'</p>'
+    buttons[1].innerHTML='<p style="padding:0;margin:0;margin-top:8px;margin-left:4px;">'+values[1]+'</p>'
 });
 
 slider.noUiSlider.on('end', function(values,handle,unencoded){
@@ -247,7 +259,8 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		}
 	function filterpoints(){
 		//coordonnes continent
-		coord=[[-60,30,350,'North America'],[30,48,670,'Europe'],[30,-9,300,'Africa']]
+		coord=[[-60,30,350,'North America'],[30,48,670,'Europe'],[30,-9,300,'Africa'],
+			[-60,-30,320,'South America'],[110,20,250,'Asia'],[140,-30,300,'Oceania']]
 		//récupération des options de filtrage active
 		optionstype=document.getElementsByClassName('typecat')
 		optiontypeactive=[]
