@@ -123,7 +123,6 @@ function doSomething(values, handle, unencoded, tap, positions) {
 }
 
 function filterPips(value, type) {
-   	console.log(value%10==0);
     return value % 10==0 ? 2 : 0;
 }
 
@@ -158,7 +157,6 @@ slider.noUiSlider.on('update', function (values) {
 });
 
 slider.noUiSlider.on('end', function(values,handle,unencoded){
-	console.log(unencoded)
 	debut=unencoded[0]
 	fin=unencoded[1]
 	filterpoints()
@@ -336,6 +334,11 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 				.attr("r", 2)
 			
 		}
+		d3.selectAll("circle")
+		.filter(function(d) { return (d.year < debut || d.year > fin)})
+		.style("opacity", 0)
+		.attr("r", 2)
+
 		svg.selectAll("circle")
 		.attr("cx", function (d) {return projection([d.newlongitude,d.newlatitude])[0]; })
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
