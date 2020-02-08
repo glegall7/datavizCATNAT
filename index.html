@@ -34,7 +34,7 @@
    			
    			<div class="col s12 row" id="selectpanel">
    			<div id="onoff" onclick="displayhide()">
-   				<i class="small material-icons">expand_more</i>
+   				<i class="small material-icons" id="moreless">expand_more</i>
    				</div>
    			<div class="col s4 content">   				
    				<div class="row">
@@ -166,7 +166,7 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 });
 </script>
 <script>
-		var height = window.innerHeight;
+		var height = window.innerHeight -64;
 		var mains=document.getElementsByClassName("main")
 		for (var i = 0; i < mains.length; i++) {
 			mains[i].style.height=height;
@@ -183,6 +183,7 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 				
 					}
 				document.getElementById('selectpanel').style.height='auto';
+				document.getElementById('moreless').innerHTML='expand_more';
 				hide=0
 				}
 			else{
@@ -192,6 +193,7 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 				
 				}
 				document.getElementById('selectpanel').style.height='0px';
+				document.getElementById('moreless').innerHTML='expand_less';
 				hide=1
 			}
 		}
