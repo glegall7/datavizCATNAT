@@ -1,0 +1,62 @@
+﻿Disaster,Subdisaster,number
+Drought,,481
+Drought,Heat wave,18
+Drought,Famine,52
+Drought,Crop failure,11
+Drought,Food shortage,128
+Drought,Water shortage,20
+Drought,Wildfire,14
+Drought,Insect infestation,1
+Drought,Storm,2
+Drought,Epidemic,1
+Drought,Cold wave,4
+Drought,Flood,2
+Drought,Fire,2
+Drought,Snow/ice,1
+Earthquake,,1173
+Earthquake,Tsunami/Tidal wave,124
+Earthquake,Fire,15
+Earthquake,Slide (land, mud, snow, rock),159
+Earthquake,Flood,4
+Earthquake,Volcanic activity,3
+Earthquake,Collapse,1
+Earthquake,Avalanche (Snow, Debris),1
+Extreme temperature ,,507
+Extreme temperature ,Drought,20
+Extreme temperature ,Snow/ice,43
+Extreme temperature ,Cold wave,5
+Extreme temperature ,Fog,2
+Extreme temperature ,Storm,1
+Extreme temperature ,Wildfire,7
+Fog,,1
+Impact,,1
+Mass movement (dry),,48
+Storm,Avalanche (Snow, Debris),9
+Storm,,3116
+Storm,Surge,25
+Storm,Flood,663
+Storm,Hail,139
+Storm,Rain,74
+Storm,Slide (land, mud, snow, rock),114
+Storm,Transport accident,27
+Storm,Cold wave,53
+Storm,Fire,4
+Storm,Snow/ice,7
+Storm,Broken Dam/Burst bank,2
+Storm,Tsunami/Tidal wave,2
+Storm,Lightening,8
+Storm,Wildfire,1
+Volcanic activity,,235
+Volcanic activity,Slide (land, mud, snow, rock),4
+Volcanic activity,Flood,3
+Volcanic activity,Earthquake,5
+Volcanic activity,Pollution,3
+Volcanic activity,Fire,1
+Volcanic activity,Rain,1
+Volcanic activity,Tsunami/Tidal wave,1
+Wildfire,,409
+Wildfire,Pollution,6
+Wildfire,Heat wave,20
+Wildfire,Storm,2
+Wildfire,Industrial accidents,1
+Wildfire,Explosion,1
