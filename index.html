@@ -98,6 +98,8 @@
    					<div class="col s1"> <img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></div>
    				</div>
    				<div id="test-slider" style="color:white;"></div>
+   				<div id="svgcontainerbottom"></div>
+   				<div id="svgcontainerbottom2"></div>
    			</div>
    			<div class="col s2 main" id="details">
    				
@@ -160,6 +162,7 @@ noUiSlider.create(slider, {
            decimals: 0
        })
    }
+   
 });
 var buttons =document.getElementsByClassName('noUi-touch-area')
 slider.noUiSlider.on('update', function (values, handle, unencoded, tap, positions) {
@@ -181,7 +184,19 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 		var svg = d3.select( "#svgcontainer" )
   		.append( "svg" )
 		  .attr( "height", height );
-
+		
+		var margin = {top:0, right:0, bottom:0, left:0};
+	    var width = document.getElementById('svgcontainerbottom').offsetWidth-margin.right-margin.left,
+	        height2 = 50-margin.top-margin.bottom;
+		var svg2 = d3.select( "#svgcontainerbottom" )
+  		.append( "svg" )
+		  .attr( "height", height2 )
+		.append("g")
+	  	.attr("transform", "translate("+margin.left+","+margin.top+")")
+	  	
+	  	
+	  	
+	  	
     var projection = d3.geoNaturalEarth1();
     projection.center([60.454071, -13]).scale(140)
 
@@ -210,6 +225,43 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
       d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/couleur.csv", function(couleur){
       //console.log(couleur)
       
+      //tracé graphique nb catastrophe par année
+      var catbyyear = d3.nest()
+		.key(function(d) { return d.year; })
+		.rollup(function(leaves) { return leaves.length; })
+		.entries(data);
+      
+      
+      
+      var x = d3.scaleTime()
+        .domain(d3.extent(catbyyear,function(d){return d.key}))
+        .range([0, width])
+
+      var y = d3.scaleLinear()
+        .domain([d3.min(catbyyear, function(d){return d.value}),
+                 d3.max(catbyyear, function(d){return d.value})])
+        .range([0,height2]);
+
+
+
+
+        var line2 = d3.line()
+        .curve(d3.curveMonotoneX)
+        .x(function(d,i){return x(d.key)})
+        .y(function(d,i){return 50-y(d.value);})
+
+        
+        var lines = svg2.append("g").selectAll("path").data([catbyyear]).enter()
+        .append("path")
+        .attr("d", line2)
+        .attr("fill", "none")
+        .attr("stroke", "red")
+        
+        
+      //fin tracé graphique cat/année
+      
+    
+        
       svg.append("g").selectAll("circle")
 		.data(data).enter()
 		.append("circle")
@@ -308,7 +360,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		if(optiontypeactive.length==0 && zonegeoactive.length>0){
 			coord=barycentre(coordactive)
 			path = path.projection(projection.center([coord[0], coord[1]]).scale(coord[2]));
-					d3.selectAll("path")
+					svg.selectAll("path")
 						.transition()
 				      	.duration(0)
 				      	.attr("d", path);
@@ -322,7 +374,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		if(optiontypeactive.length>0 && zonegeoactive.length>0){
 			coord=barycentre(coordactive)
 			path = path.projection(projection.center([coord[0], coord[1]]).scale(coord[2]));
-					d3.selectAll("path")
+					svg.selectAll("path")
 						.transition()
 				      	.duration(0)
 				      	.attr("d", path);
@@ -340,7 +392,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		if(zonegeoactive.length==0 && optiontypeactive.length==0){
 			//centrage carte monde
 			path = path.projection(projection.center([60.454071, -13]).scale(140));
-					d3.selectAll("path")
+					svg.selectAll("path")
 						.transition()
 				      	.duration(0)
 				      	.attr("d", path);
