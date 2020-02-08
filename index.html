@@ -33,7 +33,10 @@
    			</div>
    			
    			<div class="col s12 row" id="selectpanel">
-   			<div class="col s4">
+   			<div id="onoff" onclick="displayhide()">
+   				<i class="small material-icons">expand_more</i>
+   				</div>
+   			<div class="col s4 content">   				
    				<div class="row">
    					<div class="col s6">
    						<p>
@@ -78,7 +81,7 @@
    				
    				</div>
    			</div>
-   			<div class="col s8">
+   			<div class="col s8 content">
    				<div class="row">
    					<div class="col s1 offset-s2"> <img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></div>
    					<div class="col s1"> <img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></div>
@@ -168,6 +171,29 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 		for (var i = 0; i < mains.length; i++) {
 			mains[i].style.height=height;
 		
+		}
+		var hide=0;
+		
+		function displayhide(){
+			if(hide==1)
+				{
+				var mains=document.getElementsByClassName("content")
+				for (var i = 0; i < mains.length; i++) {
+					mains[i].style.display='block';
+				
+					}
+				document.getElementById('selectpanel').style.height='auto';
+				hide=0
+				}
+			else{
+				var mains=document.getElementsByClassName("content")
+				for (var i = 0; i < mains.length; i++) {
+					mains[i].style.display='none';
+				
+				}
+				document.getElementById('selectpanel').style.height='0px';
+				hide=1
+			}
 		}
   		
 		var svg = d3.select( "#svgcontainer" )
@@ -300,7 +326,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		}
 	function filterpoints(){
 		//coordonnes continent
-		coord=[[-60,30,350,'North America'],[30,48,670,'Europe'],[30,-9,300,'Africa'],
+		coord=[[-60,20,400,'North America'],[30,48,670,'Europe'],[30,-9,300,'Africa'],
 			[-60,-30,320,'South America'],[110,20,250,'Asia'],[140,-30,300,'Oceania']]
 		//récupération des options de filtrage active
 		optionstype=document.getElementsByClassName('typecat')
@@ -380,7 +406,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 		}
 		if(zonegeoactive.length==0 && optiontypeactive.length==0){
 			//centrage carte monde
-			path = path.projection(projection.center([-20, 40]).scale(260));
+			path = path.projection(projection.center([0, 0]).scale(180));
 					svg.selectAll("path")
 						.transition()
 				      	.duration(0)
@@ -426,13 +452,22 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
   	.main{height:800px}
   	
   	#selectpanel{
-  	background-color:rgba(255,255,255,0.7);
+  	background-color:rgba(240,240,240,0.7);
   	padding-top:10px;
   	padding-left:20px;
   	padding-bottom:5px;
   	position:absolute;
   	bottom:0;
   	margin-bottom:0;
+  	}
+  	
+  	#onoff{
+  		position:relative;
+  		background-color:rgba(240,240,240,0.7);
+  		top:-38px;
+  		width:28px;
+  		height:28px;
+  		left:50%
   	}
   </style>
 
