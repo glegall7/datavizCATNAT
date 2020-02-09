@@ -250,13 +250,14 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
             .style("stroke", "#fff")
             .style("opacity", 0.6)
 })
+var couleurlist
     d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/test6.csv", function(data){
       //console.log(data)
       d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/couleur.csv", function(couleur){
       //console.log(couleur)
       d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/liencatnat2.csv", function(error, datagraph) {
       
-    	  
+    	  couleurlist=couleur
    		//tracé graphique nb catastrophe par année
       var catbyyear = d3.nest()
 		.key(function(d) { return d.year; })
@@ -491,6 +492,18 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 				.filter(function(d) { return d.Disaster_type == optiontypeactive[i] })
 				.style("opacity", 0.8)
 				.attr("r", 3)
+				
+				svg3.selectAll("line")
+				.filter(function(e){return (e.source.name==optiontypeactive[i])||(e.target.name==optiontypeactive[i])})
+			  .attr("stroke", function (d) {
+				var color=''
+				couleurlist.forEach (function(d){
+					if(d.Cat==optiontypeactive[i]){
+					color=d.Color
+						}
+					})
+				return color})
+				
 			}
 		}
 		if(optiontypeactive.length==0 && zonegeoactive.length>0){
