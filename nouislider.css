@@ -123,7 +123,7 @@
   background-color:lightgrey;
 }
 .noUi-connect {
-  background: #3FB8AF;
+  background: red;
 }
 /* Handles and cursors;
  */
@@ -294,7 +294,7 @@
   
   border-radius: 50%;
   box-shadow: none;
-  background-color: #26A69A;
+  background-color: red;
   border: none;
   
 }

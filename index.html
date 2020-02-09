@@ -163,6 +163,7 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 	debut=unencoded[0]
 	fin=unencoded[1]
 	filterpoints()
+	filterlinegraph()
 	
 });
 </script>
@@ -174,7 +175,7 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 		
 		}
 		var hide=0;
-		
+		//function to hide or display the menu tool bar
 		function displayhide(){
 			if(hide==1)
 				{
@@ -199,6 +200,7 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 			}
 		}
   		
+		//definition of all the svg containers
 		var svg = d3.select( "#svgcontainer" )
   		.append( "svg" )
 		  .attr( "height", height );
@@ -230,6 +232,22 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 	  
 	// Init graph data structure
 	var graph = {nodes:[], links:[]};
+	
+	//definition gradient couleur for line chart bottom date
+	var datagradient=[                             
+        {offset: "0%", color: "red"}, 
+        {offset: "100%", color: "red"}    
+    ]
+	var gradient= svg2.append("linearGradient")                
+    .attr("id", "line-gradient")            
+    .attr("gradientUnits", "userSpaceOnUse")    
+    .attr("x1", "0%").attr("y1", 0)         
+    .attr("x2", "100%").attr("y2", 0)
+    gradient.selectAll("stop")                      
+    .data(datagradient)
+    .enter().append("stop")         
+    .attr("offset", function(d) { return d.offset; })   
+    .attr("stop-color", function(d) { return d.color; });
 	
 	
 	var keys2=[]
@@ -287,6 +305,7 @@ var couleurlist
         var lines = svg2.append("g").selectAll("path").data([catbyyear]).enter()
         .append("path")
         .attr("d", line2)
+        .attr("id", "line")
         .attr("fill", "none")
         .attr("stroke", "red")
         
@@ -563,6 +582,29 @@ var couleurlist
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
 	}
 	
+	
+	function filterlinegraph(){
+		var interval=2020-1900
+		var debutpourc=String((debut-1900)/interval*100)+'%'
+		var debutpourc2=String((debut-1900)/interval*100+1)+'%'
+		var finpourc2=String(100-(2020-fin)/interval*100-1)+'%'
+		var finpourc=String(100-(2020-fin)/interval*100)+'%'
+		gradient.selectAll("stop").remove()
+		datagradient=[                             
+	        {offset: "0%", color: "grey"}, 
+	        {offset: debutpourc, color: "grey"}, 
+	        {offset: debutpourc2, color: "red"},
+	        {offset: finpourc2, color: "red"},
+	        {offset: finpourc, color: "grey"}, 
+	        {offset: "100%", color: "grey"}
+	    ]
+		gradient.selectAll("stop")                      
+	    .data(datagradient)                  
+		.enter().append("stop")         
+	    .attr("offset", function(d) { return d.offset; })   
+	    .attr("stop-color", function(d) { return d.color; });
+	}
+	
 	function barycentre(listecoord){
 		lat=0
 		longi=0
@@ -604,6 +646,12 @@ var couleurlist
   		height:28px;
   		left:50%
   	}
+  	
+  	#line {                         
+    fill: none;                 
+    stroke: url(#line-gradient);    
+    stroke-width: 2px;          
+}
   </style>
 
 
