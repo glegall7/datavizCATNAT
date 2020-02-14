@@ -444,7 +444,7 @@ var couleurlist
           d3.select(this).style("opacity",1)
           .attr("r", 4)
           elm=document.getElementById("details")
-          elm.innerHTML="<p>Details:</p> <p>You will find below the disaster informations: <ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ d.Total_deaths+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li></ul></p>'
+          elm.innerHTML="<h4 style='text-align:center;'>Details</h4> <p>You will find below the disaster informations: <ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li></ul></p>'
 			}
     })
     .on("mouseout", function(d) {
