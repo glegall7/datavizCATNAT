@@ -433,18 +433,22 @@ var couleurlist
 			return color})
 		.style("opacity", 0.8)
 		.on("mouseover", function(d,i){ 
+			if(d3.select(this).style("opacity")>=0.8){
     		
           d3.select(this).style("opacity",1)
           .attr("r", 4)
           elm=document.getElementById("details")
           elm.innerHTML='<li>'+d.Country+'</li>'
+			}
     })
     .on("mouseout", function(d) {
+    	if(d3.select(this).style("opacity")>=0.8){
     		d3.select(this).style("opacity",0.8)
           .attr("r", 2)
           elm=document.getElementById("details")
           elm.innerHTML=''   ;  
     		filterpoints()
+    	}
     })
       })
       })
