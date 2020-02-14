@@ -83,14 +83,14 @@
    			</div>
    			<div class="col s8 content" style="margin-top:-28px">
    				<div class="row">
-   					<div class="col s1 offset-s2"> <img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></div>
-   					<div class="col s1"> <img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></div>
-   					<div class="col s1"> <img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></div>
+   					<div class="col s1 offset-s2"> <a class="tooltipped" data-position="bottom" data-tooltip="Drought"><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Earthquake"><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Extreme Temperature (dry)"><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Fog"><img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Impact"><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Storm"><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Wildfire"><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Volcanic activity"><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></a></div>
    				</div>
    				<div id="test-slider" style="color:white;"></div>
    				<div id="svgcontainerbottom" style="margin-bottom:20px"></div>
@@ -98,8 +98,6 @@
    				</div>
    			<div class="col s2 main" >
    				<div id="pres">
-						<p>On this map, you can see natural disasters according to their type, their place and the year they happened</p>
-						<p>Some natural disasters are linked to others (for instance : earthquakes and storms). You can have a look at those links one the figure just behind.</p>
 					</div>
 					<div id="details">
 					</div>
@@ -124,6 +122,12 @@
   <script src="init.js"></script>
   <script src="wNumb.js"></script>
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+  
 var debut=1900
 var fin=2020
 
@@ -436,14 +440,17 @@ var couleurlist
 				}
 			
 			return color})
-		.style("opacity", 0.8)
+		.style("opacity", 0.6)
 		.on("mouseover", function(d,i){ 
-			if(d3.select(this).style("opacity")>=0.8){
+			if(d3.select(this).style("opacity")>=0.6){
 				document.getElementById("pres").style.display="none"
           d3.select(this).style("opacity",1)
-          .attr("r", 4)
+          .attr("r", 5)
           elm=document.getElementById("details")
-          elm.innerHTML="<p>Details:</p> <p>You will find below the disaster informations: <ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ d.Total_deaths+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li></ul></p>'
+
+          elm.innerHTML="<ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li>'+ '<li>Sub disaster: '+ d.Associated_disaster+'</li></ul></p>'
+
+
 			}
     })
     .on("mouseout", function(d) {
@@ -522,7 +529,7 @@ var couleurlist
 				svg.selectAll("circle")
 				.filter(function(d) { return d.Disaster_type == optiontypeactive[i] })
 				.style("opacity", 0.8)
-				.attr("r", 3)
+				.attr("r", 4)
 				
 				svg3.selectAll("line")
 				.filter(function(e){return (e.source.name==optiontypeactive[i])||(e.target.name==optiontypeactive[i])})
@@ -548,7 +555,7 @@ var couleurlist
 				svg.selectAll("circle")
 				.filter(function(d) { return (d.continent == zonegeoactive[i])})
 				.style("opacity", 0.8)
-				.attr("r", 3)
+				.attr("r", 4)
 			}
 		}
 		if(optiontypeactive.length>0 && zonegeoactive.length>0){
