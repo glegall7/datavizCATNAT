@@ -98,7 +98,6 @@
    				</div>
    			<div class="col s2 main" >
    				<div id="pres">
-   				<h4 style="text-align:center;">Information</h4>
 						<p>On this map, you can see natural disasters according to their type, their place and the year they happened</p>
 						<p>Some natural disasters are linked to others (for instance : earthquakes and storms). You can have a look at those links one the figure just behind.</p>
 					</div>
@@ -450,7 +449,7 @@ var couleurlist
           d3.select(this).style("opacity",1)
           .attr("r", 4)
           elm=document.getElementById("details")
-          elm.innerHTML="<h4 style='text-align:center;'>Details</h4> <p>You will find below the disaster informations: <ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li></ul></p>'
+          elm.innerHTML="<p>Details:</p> <p>You will find below the disaster informations: <ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ d.Total_deaths+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li></ul></p>'
 			}
     })
     .on("mouseout", function(d) {
