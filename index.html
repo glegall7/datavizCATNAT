@@ -442,15 +442,15 @@ var couleurlist
 				}
 			
 			return color})
-		.style("opacity", 0.8)
+		.style("opacity", 0.6)
 		.on("mouseover", function(d,i){ 
-			if(d3.select(this).style("opacity")>=0.8){
+			if(d3.select(this).style("opacity")>=0.6){
 				document.getElementById("pres").style.display="none"
           d3.select(this).style("opacity",1)
-          .attr("r", 4)
+          .attr("r", 5)
           elm=document.getElementById("details")
 
-          elm.innerHTML="<h4 style='text-align:center;'>Details</h4> <p>You will find below the disaster informations: <ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li>'+ '<li>Sub disaster: '+ d.Associated_disaster+' (This line may be shown as "undefined", which mean there are no associated disaster)</li></ul></p>'
+          elm.innerHTML="<h4 style='text-align:center;'>Details</h4> <p>You will find below the disaster informations: <ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li>'+ '<li>Sub disaster: '+ d.Associated_disaster+' (This line may be shown as "--", which mean there are no associated disaster)</li></ul></p>'
 
 
 			}
@@ -531,7 +531,7 @@ var couleurlist
 				svg.selectAll("circle")
 				.filter(function(d) { return d.Disaster_type == optiontypeactive[i] })
 				.style("opacity", 0.8)
-				.attr("r", 3)
+				.attr("r", 4)
 				
 				svg3.selectAll("line")
 				.filter(function(e){return (e.source.name==optiontypeactive[i])||(e.target.name==optiontypeactive[i])})
@@ -557,7 +557,7 @@ var couleurlist
 				svg.selectAll("circle")
 				.filter(function(d) { return (d.continent == zonegeoactive[i])})
 				.style("opacity", 0.8)
-				.attr("r", 3)
+				.attr("r", 4)
 			}
 		}
 		if(optiontypeactive.length>0 && zonegeoactive.length>0){
