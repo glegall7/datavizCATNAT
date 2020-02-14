@@ -83,14 +83,14 @@
    			</div>
    			<div class="col s8 content" style="margin-top:-28px">
    				<div class="row">
-   					<div class="col s1 offset-s2"> <img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></div>
-   					<div class="col s1"> <img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></div>
-   					<div class="col s1"> <img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></div>
-   					<div class="col s1"> <img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></div>
+   					<div class="col s1 offset-s2"> <a class="tooltipped" data-position="bottom" data-tooltip="Drought"><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Earthquake"><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Extreme Temperature (dry)"><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Fog"><img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Impact"><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Storm"><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Wildfire"><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></a></div>
+   					<div class="col s1"> <a class="tooltipped" data-position="bottom" data-tooltip="Volcanic activity"><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></a></div>
    				</div>
    				<div id="test-slider" style="color:white;"></div>
    				<div id="svgcontainerbottom" style="margin-bottom:20px"></div>
@@ -125,6 +125,12 @@
   <script src="init.js"></script>
   <script src="wNumb.js"></script>
 <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.tooltipped');
+    var instances = M.Tooltip.init(elems);
+  });
+  
 var debut=1900
 var fin=2020
 
