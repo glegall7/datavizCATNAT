@@ -471,8 +471,8 @@ var couleurlist
 	//function to select points base on user choice (region, period of time and type of catnat)
 	function filterpoints(){
 		//coordonnes continent
-		coord=[[-60,20,400,'North America'],[30,48,670,'Europe'],[30,-9,300,'Africa'],
-			[-60,-30,320,'South America'],[110,20,250,'Asia'],[140,-30,300,'Oceania']]
+		coord=[[-80,35,350,'North America'],[25,48,670,'Europe'],[20,-5,300,'Africa'],
+			[-60,-30,320,'South America'],[80,20,320,'Asia'],[140,-30,300,'Oceania']]
 		//récupération des options de filtrage active
 		optionstype=document.getElementsByClassName('typecat')
 		optiontypeactive=[]
@@ -613,6 +613,9 @@ var couleurlist
 		lat=0
 		longi=0
 		scale=1000
+		if(listecoord.length>2){
+			return [0,0,180]
+		}
 		for (var i = 0; i < listecoord.length; i++) {
 			lat=lat+listecoord[i][0]
 			longi=longi+listecoord[i][1]
