@@ -20,16 +20,21 @@
 <body>
 <div>
    <div class="row" style="margin-bottom:0;">
-	<div id="disasterpanel">
+	<div class="col s2" id="disasterpanel">
 		<div class="black-text"><h4>CATNAT</h4></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Drought"><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Earthquake"><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Extreme Temperature (dry)"><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Fog"><img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Impact"><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Storm"><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Wildfire"><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Volcanic activity"><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></a></div>
+		<div id="buttondisaster" >
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought"><p style="margin:0;padding-top:5px;">Drought : <span>600</span></p></div>
+			</div>
+			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Earthquake"><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></a></div>
+			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Extreme Temperature (dry)"><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></a></div>
+			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Fog"><img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></a></div>
+			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Impact"><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></a></div>
+			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Storm"><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></a></div>
+			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Wildfire"><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></a></div>
+			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Volcanic activity"><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></a></div>
+		</div>
 	</div>
    			<div class="col s10 main" >
    				<div id="svgcontainer"></div>
@@ -84,7 +89,7 @@
    					</div>
    				</div>
    			</div>
-   			<div class="col s8 content" style="margin-top:-28px">
+   			<div class="col s8 content" style="margin-top:0px">
    				<div id="test-slider" style="color:white;"></div>
    				<div id="svgcontainerbottom" style="margin-bottom:20px"></div>
    				</div>
@@ -632,6 +637,13 @@ var couleurlist
 				
 		filterpoints()
 	}
+	
+	function displayinfo(elm){
+		elm.getElementsByTagName('div')[1].style.display='block'
+	}
+	function hideinfo(elm){
+		elm.getElementsByTagName('div')[1].style.display='none'
+	}
 	filterpoints()
   </script>
   <style>
@@ -648,25 +660,32 @@ var couleurlist
   	position:absolute;
   	bottom:0;
   	margin-bottom:0;
+  	
   	}
   	
 	#disasterpanel{
-  	background-color:rgba(240,240,240,0.7);
   	position:absolute;
   	left:0;
 	top:0;
   	margin-bottom:0;
-	width:50px;
+  	padding:0;
+  	}
+  	
+  	#buttondisaster{
+  	background-color:rgba(240,240,240,0.7);
+  	
+	width:30px;
   	}
 
 	.button{
 		margin-top : 10px;
 		margin-bottom : 10px;
+		height:30px;
 	}
 
   	#onoff{
   		position:relative;
-  		background-color:rgba(240,240,240,0.7);
+  		background-color:none;
   		top:-38px;
   		width:28px;
   		height:28px;
@@ -677,6 +696,27 @@ var couleurlist
     fill: none;                 
     stroke: url(#line-gradient);    
     stroke-width: 2px;          
+}
+.detailstype
+{
+	position:relative;
+	left:0;
+	top:-30px;
+	padding-left:35px;
+	height:30px;
+	width:150px;
+	background-color:#ff7b7b;
+	color:white;
+	font-weight:600;
+	border-radius:15px 15px 15px 15px;
+	display:none;
+}
+
+.iconcat
+{
+	position:relative;
+	left:0;
+	z-index:1;
 }
   </style>
 
