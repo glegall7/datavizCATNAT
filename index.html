@@ -25,15 +25,32 @@
 		<div id="buttondisaster" >
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcat" ><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="30px"/></div>
-				<div class="detailstype" id="detailstypeDrought"><p style="margin:0;padding-top:5px;">Drought : <span>600</span></p></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ff7b7b;"><p style="margin:0;padding-top:5px;">Drought : <span>600</span></p></div>
 			</div>
-			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Earthquake"><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></a></div>
-			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Extreme Temperature (dry)"><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></a></div>
-			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Fog"><img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></a></div>
-			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Impact"><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></a></div>
-			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Storm"><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></a></div>
-			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Wildfire"><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></a></div>
-			<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Volcanic activity"><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></a></div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#dab58f;"><p style="margin:0;padding-top:5px;">Earthquake : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="30px" /></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#d4dff1;"><p style="margin:0;padding-top:5px;">Extreme Temperature : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ab73d6;"><p style="margin:0;padding-top:5px;">Impact : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ffe187;"><p style="margin:0;padding-top:5px;">Storm : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#00d660;"><p style="margin:0;padding-top:5px;">Wildfire : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#f2a36f;"><p style="margin:0;padding-top:5px;">Volcanic activity : <span>600</span></p></div>
+			</div>
 		</div>
 	</div>
    			<div class="col s10 main" >
@@ -672,7 +689,6 @@ var couleurlist
   	}
   	
   	#buttondisaster{
-  	background-color:rgba(240,240,240,0.7);
   	
 	width:30px;
   	}
@@ -701,11 +717,11 @@ var couleurlist
 {
 	position:relative;
 	left:0;
-	top:-30px;
+	top:-31px;
 	padding-left:35px;
-	height:30px;
-	width:150px;
-	background-color:#ff7b7b;
+	height:31px;
+	min-width:150px;
+	width:auto;
 	color:white;
 	font-weight:600;
 	border-radius:15px 15px 15px 15px;
