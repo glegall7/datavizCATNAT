@@ -123,6 +123,13 @@
   <script src="wNumb.js"></script>
 <script>
 
+function displayinfo(elm){
+	elm.getElementsByTagName('div')[1].style.display='block'
+}
+function hideinfo(elm){
+	elm.getElementsByTagName('div')[1].style.display='none'
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
     var instances = M.Tooltip.init(elems);
@@ -641,12 +648,7 @@ var couleurlist
 		filterpoints()
 	}
 	
-	function displayinfo(elm){
-		elm.getElementsByTagName('div')[1].style.display='block'
-	}
-	function hideinfo(elm){
-		elm.getElementsByTagName('div')[1].style.display='none'
-	}
+	
 	filterpoints()
   </script>
   <style>
