@@ -20,16 +20,67 @@
 <body>
 <div>
    <div class="row" style="margin-bottom:0;">
-	<div id="disasterpanel">
-		<div class="black-text"><h5>CATNAT</h5></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Drought"><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Earthquake"><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Extreme Temperature (dry)"><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="100%" /></a></div>
-		<!-- <div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Fog"><img class="typecat" name="Fog" src="fog.png" width="100%" onclick="change(event,'Fog')" /></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Impact"><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="100%"/></a></div> -->
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Storm"><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Wildfire"><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="100%"/></a></div>
-		<div class="button"> <a class="tooltipped" data-position="bottom" data-tooltip="Volcanic activity"><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="100%"/></a></div>
+	<div class="col s2" id="disasterpanel">
+		<div class="black-text"><h4>CATNAT</h4></div>
+		<div id="buttondisaster" >
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ff7b7b;width:150px;"><p style="margin:0;padding-top:5px;">Drought : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#dab58f;width:170px;"><p style="margin:0;padding-top:5px;">Earthquake : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="30px" /></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#d4dff1;width:230px;"><p style="margin:0;padding-top:5px;">Extreme Temperature : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ab73d6;width:130px;"><p style="margin:0;padding-top:5px;">Impact : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ffe187;width:130px;"><p style="margin:0;padding-top:5px;">Storm : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#00d660;width:150px;"><p style="margin:0;padding-top:5px;">Wildfire : <span>600</span></p></div>
+			</div>
+			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcat" ><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="30px"/></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#f2a36f;width:200px;"><p style="margin:0;padding-top:5px;">Volcanic activity : <span>600</span></p></div>
+			</div>
+		</div>
+	</div>
+	<div  id="continentpanel">
+		<div id="buttonContinent" >
+			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcont" ><img class="typecont" name="Europe" src="europe.png"  onclick="change(event,'Europe')" width="40px"/></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:150px;left:-110px;"><p style="margin:0;padding-top:10px;">Europe : <span>600</span></p></div>
+			</div>
+			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcont" ><img class="typecont" name="North America" src="northamerica.png" onclick="change(event,'North America')" width="40px"/></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:200px;left:-160px;"><p style="margin:0;padding-top:10px;">North America : <span>600</span></p></div>
+			</div>
+			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcont" ><img class="typecont" name="South America" src="southamerica.png" onclick="change(event,'South America')" width="40px" /></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:200px;left:-160px;"><p style="margin:0;padding-top:10px;">South America : <span>600</span></p></div>
+			</div>
+			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcont" ><img class="typecont" name="Oceania" src="oceania.png" onclick="change(event,'Oceania')" width="40px"/></div>
+				<div class="detailscont" style="background-color:lightgrey;width:150px;left:-110px;"><p style="margin:0;padding-top:10px;">Oceania : <span>600</span></p></div>
+			</div>
+			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcont" ><img class="typecont" name="Asia" src="asia.png" onclick="change(event,'Asia')" width="40px"/></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:130px;left:-90px;"><p style="margin:0;padding-top:10px;">Asia : <span>600</span></p></div>
+			</div>
+			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
+				<div class="iconcont" ><img class="typecont" name="Africa" src="africa.png" onclick="change(event,'Wildfire')" width="40px"/></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:140px;left:-100px;"><p style="margin:0;padding-top:10px;">Africa : <span>600</span></p></div>
+			</div>
+			
+		</div>
 	</div>
    			<div class="col s10 main" >
    				<div id="svgcontainer"></div>
@@ -40,51 +91,8 @@
    			<div id="onoff" onclick="displayhide()">
    				<i class="small material-icons" id="moreless">expand_more</i>
    				</div>
-   			<div class="col s4 content" style="margin-top:-28px">   				
-   				<div class="row">
-   					<div class="col s6">
-   						<p>
-						      <label>
-						        <input type="checkbox" class="filled-in zonegeo" name="North America" onclick="filterpoints()"/>
-						        <span class="black-text" >North America</span>
-						      </label>
-						    </p>
-						    <p>
-						      <label>
-						        <input type="checkbox" class="filled-in zonegeo" name="South America" onclick="filterpoints()"/>
-						        <span class="black-text" >South America</span>
-						      </label>
-						    </p>
-						    <p>
-						      <label>
-						        <input type="checkbox" class="filled-in zonegeo" name="Europe" onclick="filterpoints()" />
-						        <span class="black-text"  >Europe</span>
-						      </label>
-						  </p>
-						</div>
-						  <div class="col s6">
-   						<p>
-					      <label>
-					        <input type="checkbox" class="filled-in zonegeo" name="Africa" onclick="filterpoints()" />
-					        <span class="black-text" >Africa</span>
-					      </label>
-					    </p>
-					    <p>
-					      <label>
-					        <input type="checkbox" class="filled-in zonegeo" name="Asia" onclick="filterpoints()" />
-					        <span class="black-text"  >Asia</span>
-					      </label>
-					    </p>
-					    <p>
-					      <label>
-					        <input type="checkbox" class="filled-in zonegeo" name="Oceania" onclick="filterpoints()" />
-					        <span class="black-text"  >Oceania</span>
-					      </label>
-					    </p>
-   					</div>
-   				</div>
-   			</div>
-   			<div class="col s8 content" style="margin-top:-28px">
+   			
+   			<div class="col s12 content" style="margin-top:0px">
    				<div id="test-slider" style="color:white;"></div>
    				<div id="svgcontainerbottom" style="margin-bottom:20px"></div>
    				</div>
@@ -487,20 +495,20 @@ var couleurlist
 			    	optiontypeactive.push(optionstype[i].name)
 			    }
 			}
-		zonegeo=document.getElementsByClassName('zonegeo')
+		zonegeo=document.getElementsByClassName('typecont')
 		zonegeoactive=[]
 		coordactive=[]
 		for (var i = 0; i < zonegeo.length; i++) {
-			    
-			    if(zonegeo[i].checked==true){
-			    	zonegeoactive.push(zonegeo[i].name)
-			    	for (var j = 0; j < coord.length; j++) {
+		    
+		    if(zonegeo[i].style.border!=''){
+		    	zonegeoactive.push(zonegeo[i].name)
+		    	for (var j = 0; j < coord.length; j++) {
 			    		if(zonegeo[i].name==coord[j][3]){
 			    			coordactive.push(coord[j])
 			    		}
 			    	}
-			    }
-			}
+		    }
+		}
 		
 		//debut du filtrage
 		//on met tous les ercles en petits et presque transparent
@@ -632,6 +640,13 @@ var couleurlist
 				
 		filterpoints()
 	}
+	
+	function displayinfo(elm){
+		elm.getElementsByTagName('div')[1].style.display='block'
+	}
+	function hideinfo(elm){
+		elm.getElementsByTagName('div')[1].style.display='none'
+	}
 	filterpoints()
   </script>
   <style>
@@ -648,25 +663,50 @@ var couleurlist
   	position:absolute;
   	bottom:0;
   	margin-bottom:0;
+  	
   	}
   	
 	#disasterpanel{
-  	background-color:rgba(240,240,240,0.7);
   	position:absolute;
   	left:0;
 	top:0;
   	margin-bottom:0;
-	width:50px;
+  	padding:0;
+  	}
+  	
+  	#buttondisaster{
+  	
+	width:30px;
+  	}
+  	
+  	#continentpanel{
+  	position:absolute;
+  	right:0;
+	top:0;
+  	margin-bottom:0;
+  	padding:0;
+  	}
+  	
+  	#buttoncontinent{
+  	
+	width:40px;
   	}
 
 	.button{
-		margin-top : 25px;
-		margin-bottom : 25px;
+		margin-top : 10px;
+		margin-bottom : 10px;
+		height:30px;
+	}
+	
+	.button2{
+		margin-top : 10px;
+		margin-bottom : 10px;
+		height:40px;
 	}
 
   	#onoff{
   		position:relative;
-  		background-color:rgba(240,240,240,0.7);
+  		background-color:none;
   		top:-38px;
   		width:28px;
   		height:28px;
@@ -677,6 +717,47 @@ var couleurlist
     fill: none;                 
     stroke: url(#line-gradient);    
     stroke-width: 2px;          
+}
+.detailstype
+{
+	position:relative;
+	left:0;
+	top:-31px;
+	padding-left:35px;
+	height:31px;
+	color:white;
+	font-weight:600;
+	border-radius:15px 15px 15px 15px;
+	display:none;
+}
+
+.iconcat
+{
+	position:relative;
+	left:0;
+	z-index:1;
+}
+
+.iconcont
+{
+	position:relative;
+	left:0;
+	z-index:1;
+	border-radius:20px;
+	background-color:grey;
+}
+
+.detailscont
+{
+	position:relative;
+	top:-41px;
+	padding-right:45px;
+	height:41px;
+	text-align:right;
+	color:white;
+	font-weight:600;
+	border-radius:20px;
+	display:none;
 }
   </style>
 
