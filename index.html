@@ -441,14 +441,24 @@ var couleurlist
 			
 			return color})
 		.style("opacity", 0.6)
+		.on("click",function(d,i){ 
+			console.log(projection([d.newlongitude,d.newlatitude])[0]);
+		svg.append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] )
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] )
+		.attr("r", 2)
+          .attr("id", "infobulle")
+          .text( d.Country)
+          .style("font-family", "system-ui")
+		})
 		.on("mouseover", function(d,i){ 
 			if(d3.select(this).style("opacity")>=0.6){
 				document.getElementById("pres").style.display="none"
-          d3.select(this).style("opacity",1)
-          .attr("r", 5)
-          elm=document.getElementById("details")
+          d3.select(this).style("opacity",1).attr("r", 5);
+          
+          /*elm=document.getElementById("details")
 
-          elm.innerHTML="<ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li>'+ '<li>Sub disaster: '+ d.Associated_disaster+'</li></ul></p>'
+          elm.innerHTML="<ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li>'+ '<li>Sub disaster: '+ d.Associated_disaster+'</li></ul></p>'*/
 
 
 			}
