@@ -505,38 +505,67 @@ var couleurlist
 		.on("mouseover", function(d,i){ 
 			if(d3.select(this).style("opacity")>=0.6){
 				document.getElementById("pres").style.display="none"
-          d3.select(this).style("opacity",1).attr("r", 5);
-
-          svg.append('g').append('rect')
-          	.attr("id", d.Disaster_No)
+          d3.select(this).style("opacity",1).attr("r", 5);}
+          console.log(parseFloat(d3.select(this).attr("cx")))
+          if(projection([d.newlongitude,d.newlatitude])[0] <="750"){
+          svg.append('rect')
           	.attr("x",projection([d.newlongitude,d.newlatitude])[0] +5)
           	.attr("y",projection([d.newlongitude,d.newlatitude])[1]-20 )  
             .attr('width', 260)
             .attr('height', 110)
           	.style('fill', "white")
             .style('stroke', "black");
-          svg.append('g').append("text")
+         svg.append("text")
           .attr("x",projection([d.newlongitude,d.newlatitude])[0] +10)
           .attr("y",projection([d.newlongitude,d.newlatitude])[1] )             
           .text("Disaster type : " + d.Disaster_type)
-          svg.append('g').append("text")
+          svg.append("text")
           .attr("x",projection([d.newlongitude,d.newlatitude])[0] +10)
           .attr("y",projection([d.newlongitude,d.newlatitude])[1] +20)             
           .text("Disaster subtype : " + d.Disaster_subtype)
-          svg.append('g').append("text")
+         svg.append("text")
           .attr("x",projection([d.newlongitude,d.newlatitude])[0] +10)
           .attr("y",projection([d.newlongitude,d.newlatitude])[1] +40)             
           .text("Country : " + d.newcountry)
-          svg.append('g').append("text")
+          svg.append("text")
           .attr("x",projection([d.newlongitude,d.newlatitude])[0] +10)
           .attr("y",projection([d.newlongitude,d.newlatitude])[1] +60)             
           .text("Year : " + d.year)
-          svg.append('g').append("text")
+          svg.append("text")
           .attr("x",projection([d.newlongitude,d.newlatitude])[0] +10)
           .attr("y",projection([d.newlongitude,d.newlatitude])[1] +80)             
-          .text("Number of casualties: " + parseInt(d.Total_deaths))
+          .text("Number of casualties: " + parseInt(d.Total_deaths))}
 
-			}
+          if(projection([d.newlongitude,d.newlatitude])[0] >"750"){
+          svg.append('rect')
+          	.attr("x",projection([d.newlongitude,d.newlatitude])[0] -265)
+          	.attr("y",projection([d.newlongitude,d.newlatitude])[1]-20 )  
+            .attr('width', 260)
+            .attr('height', 110)
+          	.style('fill', "white")
+            .style('stroke', "black");
+         svg.append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] -260)
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] )             
+          .text("Disaster type : " + d.Disaster_type)
+          svg.append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] -260)
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +20)             
+          .text("Disaster subtype : " + d.Disaster_subtype)
+         svg.append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] -260)
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +40)             
+          .text("Country : " + d.newcountry)
+          svg.append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] -260)
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +60)             
+          .text("Year : " + d.year)
+          svg.append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] -260)
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +80)             
+          .text("Number of casualties: " + parseInt(d.Total_deaths))}
+
+			
     })
     .on("mouseout", function(d) {
     	if(d3.select(this).style("opacity")>=0.8){
