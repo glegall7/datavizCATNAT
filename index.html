@@ -25,31 +25,27 @@
 		<div id="buttondisaster" >
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcat" ><img class="typecat" name="Drought" src="drought.png"  onclick="change(event,'Drought')" width="30px"/></div>
-				<div class="detailstype" id="detailstypeDrought" style="background-color:#ff7b7b;width:150px;"><p style="margin:0;padding-top:5px;">Drought : <span>600</span></p></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ff7b7b;width:150px;"><p style="margin:0;padding-top:5px;"><span id="data_drought"></span></p></div>
 			</div>
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcat" ><img class="typecat" name="Earthquake" src="earthquake.png" onclick="change(event,'Earthquake')" width="30px"/></div>
-				<div class="detailstype" id="detailstypeDrought" style="background-color:#dab58f;width:170px;"><p style="margin:0;padding-top:5px;">Earthquake : <span>600</span></p></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#dab58f;width:170px;"><p style="margin:0;padding-top:5px;"><span id="data_earthquake"></span></p></div>
 			</div>
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcat" ><img class="typecat" name="Extreme Temperature (dry)" src="extremetemperature.png" onclick="change(event,'Extreme Temperature (dry)')" width="30px" /></div>
-				<div class="detailstype" id="detailstypeDrought" style="background-color:#d4dff1;width:230px;"><p style="margin:0;padding-top:5px;">Extreme Temperature : <span>600</span></p></div>
-			</div>
-			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
-				<div class="iconcat" ><img class="typecat" name="Impact" src="impact.png" onclick="change(event,'Impact')" width="30px"/></div>
-				<div class="detailstype" id="detailstypeDrought" style="background-color:#ab73d6;width:130px;"><p style="margin:0;padding-top:5px;">Impact : <span>600</span></p></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#d4dff1;width:230px;"><p style="margin:0;padding-top:5px;"><span id="data_dry"></span></p></div>
 			</div>
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcat" ><img class="typecat" name="Storm" src="storm.png" onclick="change(event,'Storm')" width="30px"/></div>
-				<div class="detailstype" id="detailstypeDrought" style="background-color:#ffe187;width:130px;"><p style="margin:0;padding-top:5px;">Storm : <span>600</span></p></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#ffe187;width:130px;"><p style="margin:0;padding-top:5px;"><span id="data_storm"></span></p></div>
 			</div>
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcat" ><img class="typecat" name="Wildfire" src="wildfire.png" onclick="change(event,'Wildfire')" width="30px"/></div>
-				<div class="detailstype" id="detailstypeDrought" style="background-color:#00d660;width:150px;"><p style="margin:0;padding-top:5px;">Wildfire : <span>600</span></p></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#00d660;width:150px;"><p style="margin:0;padding-top:5px;"><span id = "data_wildfire"></span></p></div>
 			</div>
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcat" ><img class="typecat" name="Volcanic activity" src="volcano.png" onclick="change(event,'Volcanic activity')" width="30px"/></div>
-				<div class="detailstype" id="detailstypeDrought" style="background-color:#f2a36f;width:200px;"><p style="margin:0;padding-top:5px;">Volcanic activity : <span>600</span></p></div>
+				<div class="detailstype" id="detailstypeDrought" style="background-color:#f2a36f;width:200px;"><p style="margin:0;padding-top:5px;"><span id = "data_volcanic"></span></p></div>
 			</div>
 		</div>
 	</div>
@@ -142,7 +138,6 @@ function filterPips(value, type) {
     return value % 10==0 ? 2 : 0;
 }
 
-
 var slider = document.getElementById('test-slider');
 noUiSlider.create(slider, {
  start: [1900, 2019],
@@ -168,6 +163,7 @@ noUiSlider.create(slider, {
    }
    
 });
+
 var buttons =document.getElementsByClassName('noUi-touch-area')
 slider.noUiSlider.on('update', function (values, handle, unencoded, tap, positions) {
    
@@ -271,10 +267,11 @@ slider.noUiSlider.on('end', function(values,handle,unencoded){
 	var nodes=[]
 		// Load external data and boot
 		
+
 d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
 
-  
-  
+	
+
     // Draw the map
     svg.append("g")
         .selectAll("path")
@@ -292,6 +289,33 @@ var couleurlist
       //console.log(couleur)
       d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/liencatnat2.csv", function(error, datagraph) {
       
+	var prenested =data.filter(function(d) { return (d.year >= debut && d.year <= fin)})
+
+	var nested_data = d3.nest()
+		.key(function(d) { return d.Disaster_type; })
+		.rollup(function(leaves) { return leaves.length; })
+		.entries(data)
+	console.log(nested_data);
+	
+	var data_drought= document.getElementById("data_drought")
+	data_drought.innerHTML = 'Drought : ';
+
+	var data_earthquake= document.getElementById("data_earthquake")
+	data_earthquake.innerHTML = 'Earthquake : ' + nested_data[0].value;
+
+	var data_storm= document.getElementById("data_storm")
+	data_storm.innerHTML = 'Storms : ' + nested_data[1].value;
+
+	var data_volcanic= document.getElementById("data_volcanic")
+	data_volcanic.innerHTML = 'Volcanic activities : ' + nested_data[3].value;
+
+	var data_wildfire= document.getElementById("data_wildfire")
+	data_wildfire.innerHTML = 'Wildfires : ' + nested_data[4].value;
+
+	var data_dry= document.getElementById("data_dry")
+	data_dry.innerHTML = 'Extreme Temperatures : ' + nested_data[5].value;
+	//console.log(nested_data)
+
     	  couleurlist=couleur
    		//tracé graphique nb catastrophe par année
       var catbyyear = d3.nest()
@@ -342,7 +366,7 @@ var couleurlist
 			graph.nodes = d3.range(nb_nodes).map(function() {  
 			  return {}; 
 			})
-			console.log(graph)
+			//console.log(graph)
 			links=[]
 			datagraph.forEach(function(d,i){
 			  var source=keys2.indexOf(d.Disaster)
@@ -350,7 +374,7 @@ var couleurlist
 			  graph.links.push({"source": source, "target": target,"size":parseInt(d.number)})
 			})
 			
-			console.log(graph)
+			//console.log(graph)
 			
 			
 			function force_layout() {
@@ -573,7 +597,7 @@ var couleurlist
 						.transition()
 				      	.duration(0)
 				      	.attr("d", path);
-					console.log(optiontypeactive);
+					//console.log(optiontypeactive);
 			for (var i = 0; i < zonegeoactive.length; i++) {
 				for (var j = 0; j < optiontypeactive.length; j++) {
 					
@@ -591,7 +615,7 @@ var couleurlist
 						.transition()
 				      	.duration(0)
 				      	.attr("d", path);
-				console.log(optiontypeactive[i]);
+				//console.log(optiontypeactive[i]);
 				svg.selectAll("circle")
 				.style("opacity", 0.8)
 				.attr("r", 2)
