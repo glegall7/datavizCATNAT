@@ -53,27 +53,27 @@
 		<div id="buttonContinent" >
 			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcont" ><img class="typecont" name="Europe" src="europe.png"  onclick="change(event,'Europe')" width="40px"/></div>
-				<div class="detailscont"  style="background-color:lightgrey;width:150px;left:-110px;"><p style="margin:0;padding-top:10px;">Europe : <span>600</span></p></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:150px;left:-110px;"><p style="margin:0;padding-top:10px;"><span id = "data_europe"></span></p></div>
 			</div>
 			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcont" ><img class="typecont" name="North America" src="northamerica.png" onclick="change(event,'North America')" width="40px"/></div>
-				<div class="detailscont"  style="background-color:lightgrey;width:200px;left:-160px;"><p style="margin:0;padding-top:10px;">North America : <span>600</span></p></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:200px;left:-160px;"><p style="margin:0;padding-top:10px;"><span id = "data_north_am"></span></p></div>
 			</div>
 			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcont" ><img class="typecont" name="South America" src="southamerica.png" onclick="change(event,'South America')" width="40px" /></div>
-				<div class="detailscont"  style="background-color:lightgrey;width:200px;left:-160px;"><p style="margin:0;padding-top:10px;">South America : <span>600</span></p></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:200px;left:-160px;"><p style="margin:0;padding-top:10px;"><span id = "data_south_am"></span></p></div>
 			</div>
 			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcont" ><img class="typecont" name="Oceania" src="oceania.png" onclick="change(event,'Oceania')" width="40px"/></div>
-				<div class="detailscont" style="background-color:lightgrey;width:150px;left:-110px;"><p style="margin:0;padding-top:10px;">Oceania : <span>600</span></p></div>
+				<div class="detailscont" style="background-color:lightgrey;width:150px;left:-110px;"><p style="margin:0;padding-top:10px;"><span id = "data_oceania"></span></p></div>
 			</div>
 			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcont" ><img class="typecont" name="Asia" src="asia.png" onclick="change(event,'Asia')" width="40px"/></div>
-				<div class="detailscont"  style="background-color:lightgrey;width:130px;left:-90px;"><p style="margin:0;padding-top:10px;">Asia : <span>600</span></p></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:130px;left:-90px;"><p style="margin:0;padding-top:10px;"><span id = "data_asia"></span></p></div>
 			</div>
 			<div class="button2" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
 				<div class="iconcont" ><img class="typecont" name="Africa" src="africa.png" onclick="change(event,'Wildfire')" width="40px"/></div>
-				<div class="detailscont"  style="background-color:lightgrey;width:140px;left:-100px;"><p style="margin:0;padding-top:10px;">Africa : <span>600</span></p></div>
+				<div class="detailscont"  style="background-color:lightgrey;width:150px;left:-110px;"><p style="margin:0;padding-top:10px;"><span id = "data_africa"></span></p></div>
 			</div>
 			
 		</div>
@@ -291,30 +291,54 @@ var couleurlist
       
 	var prenested =data.filter(function(d) { return (d.year >= debut && d.year <= fin)})
 
-	var nested_data = d3.nest()
+	var nested_data_type = d3.nest()
 		.key(function(d) { return d.Disaster_type; })
 		.rollup(function(leaves) { return leaves.length; })
 		.entries(data)
-	console.log(nested_data);
+	console.log(nested_data_type);
 	
 	var data_drought= document.getElementById("data_drought")
 	data_drought.innerHTML = 'Drought : ';
 
 	var data_earthquake= document.getElementById("data_earthquake")
-	data_earthquake.innerHTML = 'Earthquake : ' + nested_data[0].value;
+	data_earthquake.innerHTML = 'Earthquake : ' + nested_data_type[0].value;
 
 	var data_storm= document.getElementById("data_storm")
-	data_storm.innerHTML = 'Storms : ' + nested_data[1].value;
+	data_storm.innerHTML = 'Storms : ' + nested_data_type[1].value;
 
 	var data_volcanic= document.getElementById("data_volcanic")
-	data_volcanic.innerHTML = 'Volcanic activities : ' + nested_data[3].value;
+	data_volcanic.innerHTML = 'Volcanic activities : ' + nested_data_type[3].value;
 
 	var data_wildfire= document.getElementById("data_wildfire")
-	data_wildfire.innerHTML = 'Wildfires : ' + nested_data[4].value;
+	data_wildfire.innerHTML = 'Wildfires : ' + nested_data_type[4].value;
 
 	var data_dry= document.getElementById("data_dry")
-	data_dry.innerHTML = 'Extreme Temperatures : ' + nested_data[5].value;
-	//console.log(nested_data)
+	data_dry.innerHTML = 'Extreme Temperatures : ' + nested_data_type[5].value;
+
+	var nested_data_continent = d3.nest()
+		.key(function(d) { return d.continent; })
+		.rollup(function(leaves) { return leaves.length; })
+		.entries(data)
+	console.log(nested_data_continent);
+
+	var data_asia= document.getElementById("data_asia")
+	data_asia.innerHTML = 'Asia : ' + nested_data_continent[0].value;
+
+	var data_north_am= document.getElementById("data_north_am")
+	data_north_am.innerHTML = 'North America : ' + nested_data_continent[1].value;
+
+	var data_europe= document.getElementById("data_europe")
+	data_europe.innerHTML = 'Europe : ' + nested_data_continent[3].value;
+
+	var data_south_am= document.getElementById("data_south_am")
+	data_south_am.innerHTML = 'South America : ' + nested_data_continent[4].value;
+
+	var data_africa= document.getElementById("data_africa")
+	data_africa.innerHTML = 'Africa : ' + nested_data_continent[5].value;
+
+	var data_oceania= document.getElementById("data_oceania")
+	data_oceania.innerHTML = 'Oceania : ' + nested_data_continent[6].value;
+	
 
     	  couleurlist=couleur
    		//tracé graphique nb catastrophe par année
