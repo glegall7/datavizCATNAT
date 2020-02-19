@@ -511,11 +511,34 @@ var couleurlist
 			if(d3.select(this).style("opacity")>=0.6){
 				document.getElementById("pres").style.display="none"
           d3.select(this).style("opacity",1).attr("r", 5);
-          
-          /*elm=document.getElementById("details")
-
-          elm.innerHTML="<ul> <li>Country : "+d.Country+'</li>' + '<li>Disaster Type : '+d.Disaster_type+'</li>' + '<li>Year: '+ d.year+'</li>' + '<li>Total deaths : '+ parseInt(d.Total_deaths)+'</li>'+ '<li>Longitude: '+ d.Longitude+'</li>'+ '<li>Latitude: '+ d.Latitude+'</li>'+ '<li>Sub disaster: '+ d.Associated_disaster+'</li></ul></p>'*/
-
+          svg.append('g').append('rect')
+          	.attr("id", d.Disaster_No)
+          	.attr("x",projection([d.newlongitude,d.newlatitude])[0] )
+          	.attr("y",projection([d.newlongitude,d.newlatitude])[1]-20 )  
+            .attr('width', 250)
+            .attr('height', 110)
+          	.style('fill', "white")
+            .style('stroke', "black");
+          svg.append('g').append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] )
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] )             
+          .text("Disaster type : " + d.Disaster_type)
+          svg.append('g').append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] )
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +20)             
+          .text("Disaster subtype : " + d.Disaster_subtype)
+          svg.append('g').append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] )
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +40)             
+          .text("Country : " + d.newcountry)
+          svg.append('g').append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] )
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +60)             
+          .text("Year : " + d.year)
+          svg.append('g').append("text")
+          .attr("x",projection([d.newlongitude,d.newlatitude])[0] )
+          .attr("y",projection([d.newlongitude,d.newlatitude])[1] +80)             
+          .text("Number of casualties: " + parseInt(d.Total_deaths))
 
 			}
     })
@@ -524,9 +547,9 @@ var couleurlist
     		document.getElementById("pres").style.display="block"
     		d3.select(this).style("opacity",0.8)
           .attr("r", 2)
-          elm=document.getElementById("details")
-          elm.innerHTML=''   ;  
     		filterpoints()
+    	 d3.selectAll("rect").remove()
+    	 d3.selectAll("text").remove();
     	}
     })
       })
