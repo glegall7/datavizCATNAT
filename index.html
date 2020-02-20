@@ -711,6 +711,65 @@ var couleurlist
 		svg.selectAll("circle")
 		.attr("cx", function (d) {return projection([d.newlongitude,d.newlatitude])[0]; })
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
+		
+		update_number()
+	}
+	
+	function update_number(){
+
+		d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/test6.csv", function(data){
+		console.log('toto')
+		var prenested =data.filter(function(d) { return (d.year >= debut && d.year <= fin)})
+
+		var nested_data_type = d3.nest()
+			.key(function(d) { return d.Disaster_type; })
+			.rollup(function(leaves) { return leaves.length; })
+			.entries(prenested)
+		console.log(nested_data_type);
+
+		var data_drought= document.getElementById("data_drought")
+		data_drought.innerHTML = 'Drought : ';
+
+		var data_earthquake= document.getElementById("data_earthquake")
+		data_earthquake.innerHTML = 'Earthquake : ' + nested_data_type[0].value;
+
+		var data_storm= document.getElementById("data_storm")
+		data_storm.innerHTML = 'Storms : ' + nested_data_type[1].value;
+
+		var data_volcanic= document.getElementById("data_volcanic")
+		data_volcanic.innerHTML = 'Volcanic activities : ' + nested_data_type[3].value;
+
+		var data_wildfire= document.getElementById("data_wildfire")
+		data_wildfire.innerHTML = 'Wildfires : ' + nested_data_type[4].value;
+
+		var data_dry= document.getElementById("data_dry")
+		data_dry.innerHTML = 'Extreme Temperatures : ' + nested_data_type[5].value;
+
+		var nested_data_continent = d3.nest()
+			.key(function(d) { return d.continent; })
+			.rollup(function(leaves) { return leaves.length; })
+			.entries(prenested)
+		console.log(nested_data_continent);
+
+		var data_asia= document.getElementById("data_asia")
+		data_asia.innerHTML = 'Asia : ' + nested_data_continent[0].value;
+
+		var data_north_am= document.getElementById("data_north_am")
+		data_north_am.innerHTML = 'North America : ' + nested_data_continent[1].value;
+
+		var data_europe= document.getElementById("data_europe")
+		data_europe.innerHTML = 'Europe : ' + nested_data_continent[3].value;
+
+		var data_south_am= document.getElementById("data_south_am")
+		data_south_am.innerHTML = 'South America : ' + nested_data_continent[4].value;
+
+		var data_africa= document.getElementById("data_africa")
+		data_africa.innerHTML = 'Africa : ' + nested_data_continent[5].value;
+
+		var data_oceania= document.getElementById("data_oceania")
+		data_oceania.innerHTML = 'Oceania : ' + nested_data_continent[6].value;
+	})
+
 	}
 	
 	
