@@ -28,8 +28,8 @@ https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fb
 - Nombre de personnes affectées par type de catastrophe naturelle : https://blockbuilder.org/jean-thomas-beaudoin/402daf723bf089b53559f2378d38cc1b
 
 ### Prévisualisation
-<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz1.PNG" width="75%"></img>
-<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz2.PNG" width="75%"></img>
+<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz1.PNG" width="45%"></img>
+<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz2.PNG" width="45%"></img>
 
 ### Visualisation finale
 <img src="https://github.com/glegall7/datavizCATNAT/blob/master/Final.PNG" width="75%"></img>
