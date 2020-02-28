@@ -2,6 +2,11 @@
 
 Jean-Thomas BEAUDOIN / Guillaume LE GALL / Donatien VAAST
 
+## Project
+This project show the repartition of natural disasters around the globe between 1900 and 2020 according to the data from catnat.net (https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fbclid=IwAR24TJ7bmZGuQwtOgNeGste324N2IfJH7SNLaSVnlA5paKqjdhG-fT2SUeM). This project has several options :
+- you can select diffrents categories (drought, earthquakes)
+- you can zoom and select on continents
+- You can select a period of time to reduce the number of disasters shown on the map.
 
 ## Mise en place du projet
 
@@ -12,10 +17,6 @@ Les catastrophes naturelles étant liées au réchauffement climatique, il pourr
 Données sur les catastrophes naturelles permettant de les localiser spatialement, temporellement et d’identifier le type des catastrophes naturelles étudiées. Nous avons déjà récupéré près de 8000 catastrophes naturelles avec leurs dates, lieux (plus ou moins précis), le type et les dégâts (humains et matériels). Les données seront a consolider car tout n’est pas présent.
 https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fbclid=IwAR24TJ7bmZGuQwtOgNeGste324N2IfJH7SNLaSVnlA5paKqjdhG-fT2SUeM
 
-### Idées de questions auxquelles on pourrait répondre
-- Où sont situées les catastrophes naturelles qui ont causées le plus de dégâts  ?
-- Quels sont les types de catastrophes naturelles par région du globe ?
-
 
 ## Réalisation
 
@@ -25,7 +26,4 @@ https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fb
 - Nombre de catastrophe naturelle par type : https://blockbuilder.org/glegall7/49d789868675ce9510521df1e3613a12?fbclid=IwAR2Vkatyi9xn1pP53f9QEyAT1stSRRsyEmDEe-nWnoEaj0QPCeBHyCkBSqo
 - Nombre de personnes affectées par type de catastrophe naturelle : https://blockbuilder.org/jean-thomas-beaudoin/402daf723bf089b53559f2378d38cc1b
 
-### Première étape : visualisation simple des données
-- Créer la page github ainsi que sa mise en page.
-- Ajouter une première visualisation
-- Rajouter les boutons d'options/filtres sur la droite (sans les relier)
+
