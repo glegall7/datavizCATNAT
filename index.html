@@ -32,7 +32,7 @@
 				<div class="detailstype" id="detailstypeDrought" style="background-color:#dab58f;width:170px;"><p style="margin:0;padding-top:5px;"><span id="data_earthquake"></span></p></div>
 			</div>
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
-				<div class="iconcat" ><img class="typecat" name="Extreme temperature" src="extremetemperature.png" onclick="change(event,'Extreme temperature')" width="30px" /></div>
+				<div class="iconcat" ><img class="typecat" name="Extreme temperature " src="extremetemperature.png" onclick="change(event,'Extreme temperature')" width="30px" /></div>
 				<div class="detailstype" id="detailstypeDrought" style="background-color:#d4dff1;width:230px;"><p style="margin:0;padding-top:5px;"><span id="data_dry"></span></p></div>
 			</div>
 			<div class="button" onmouseover="displayinfo(this)" onmouseout="hideinfo(this)">
@@ -301,7 +301,7 @@ var couleurlist
 		.key(function(d) { return d.continent; })
 		.rollup(function(leaves) { return leaves.length; })
 		.entries(data)
-	console.log(nested_data_continent);
+	
 
 	var data_asia= document.getElementById("data_asia")
 	data_asia.innerHTML = 'Asia : ' + nested_data_continent[0].value;
@@ -369,27 +369,34 @@ var couleurlist
 		.append("circle")
 		.attr("cx", function (d) {return projection([d.newlongitude,d.newlatitude])[0]; })
 		.attr("cy", function (d) { return projection([d.newlongitude,d.newlatitude])[1]; })
-		.attr("r", 2)
+		.attr("r", 3)
 		.attr("fill", function (d) {
 			var color=''
 			for (var item in couleur) {
-				if(couleur[item]['Cat']==d.Disaster_type){
+				if(couleur[item]['Cat']==d.Disaster_type.trim()){
 				color=couleur[item]['Color']
 					}
 				}
 			
 			return color})
-		.style("opacity", 0.6)
+		.attr("fill-opacity", 0.5)
+		.attr("stroke","black")
+		.attr("stroke-width",0.5)
+		.attr("stroke-opacity",1)
 		.on("click",function(d,i){ 
 		svg.append("text")
 		.attr("r", 2)
 
 		})
 		.on("mouseover", function(d,i){ 
-			if(d3.select(this).style("opacity")>=0.6){
+			if(d3.select(this).style("opacity")>=0.5){
 				
-          d3.select(this).style("opacity",1).attr("r", 5);}
-          console.log(parseFloat(d3.select(this).attr("cx")))
+          d3.select(this)
+          .attr("fill-opacity", 1)
+          .attr("stroke-width",1)
+          .attr("r", 7);
+          }
+          
           if(projection([d.newlongitude,d.newlatitude])[0] <="750"){
           svg.append('rect')
           	.attr("x",projection([d.newlongitude,d.newlatitude])[0] +5)
@@ -453,8 +460,9 @@ var couleurlist
     .on("mouseout", function(d) {
     	if(d3.select(this).style("opacity")>=0.8){
     		
-    		d3.select(this).style("opacity",0.8)
-          .attr("r", 2)
+    		d3.select(this).attr("fill-opacity", 0.5)
+    		.attr("stroke-width",0.5)
+          .attr("r", 3)
     		filterpoints()
     	
     	}
@@ -511,8 +519,10 @@ var couleurlist
 		//debut du filtrage
 		//on met tous les ercles en petits et presque transparent
 		svg.selectAll("circle")
-				.style("opacity", 0.3)
-				.attr("r", 2)
+				.attr("fill-opacity", 0.2)
+				.attr("stroke-opacity",0.7)
+				.attr("stroke-width",0.5)
+				.attr("r", 3)
 		if(zonegeoactive.length==0 && optiontypeactive.length>0){
 			//centrage carte monde
 			path = path.projection(projection.center([-20,20]).scale(220));
@@ -524,7 +534,8 @@ var couleurlist
 				
 				svg.selectAll("circle")
 				.filter(function(d) { return d.Disaster_type == optiontypeactive[i] })
-				.style("opacity", 0.8)
+				.attr("fill-opacity", 0.5)
+				.attr("stroke-opacity",1)
 				.attr("r", 4)
 				
 				
@@ -541,8 +552,10 @@ var couleurlist
 			for (var i = 0; i < zonegeoactive.length; i++) {
 				svg.selectAll("circle")
 				.filter(function(d) { return (d.continent == zonegeoactive[i])})
-				.style("opacity", 0.8)
-				.attr("r", 4)
+				.attr("fill-opacity", 0.8)
+					.attr("stroke-width",1)
+					.attr("stroke-opacity",1)
+				.attr("r", 5)
 			}
 		}
 		if(optiontypeactive.length>0 && zonegeoactive.length>0){
@@ -558,8 +571,10 @@ var couleurlist
 					
 					svg.selectAll("circle")
 					.filter(function(d) { return (d.Disaster_type == optiontypeactive[j] && d.continent == zonegeoactive[i])})
-					.style("opacity", 0.8)
-					.attr("r", 4)
+					.attr("fill-opacity", 0.9)
+					.attr("stroke-width",1)
+					.attr("stroke-opacity",1)
+					.attr("r", 6)
 				}
 			}
 		}
@@ -572,8 +587,9 @@ var couleurlist
 				      	.attr("d", path);
 				//console.log(optiontypeactive[i]);
 				svg.selectAll("circle")
-				.style("opacity", 0.8)
-				.attr("r", 2)
+				.attr("fill-opacity", 0.5)
+				.attr("stroke-opacity",1)
+				.attr("r", 3)
 			
 		}
 		svg.selectAll("circle")
@@ -591,7 +607,7 @@ var couleurlist
 	function update_number(){
 
 		d3.csv("https://raw.githubusercontent.com/glegall7/datavizCATNAT/master/test6.csv", function(data){
-		console.log('toto')
+		
 		var prenested =data.filter(function(d) { return (d.year >= debut && d.year <= fin)})
 
 		var nested_data_type = d3.nest()
@@ -622,7 +638,7 @@ var couleurlist
 			.key(function(d) { return d.continent; })
 			.rollup(function(leaves) { return leaves.length; })
 			.entries(prenested)
-		console.log(nested_data_continent);
+		
 
 		var data_asia= document.getElementById("data_asia")
 		data_asia.innerHTML = 'Asia : ' + nested_data_continent[0].value;
