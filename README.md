@@ -28,8 +28,8 @@ https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fb
 - Number of people affected per disaster type : https://blockbuilder.org/jean-thomas-beaudoin/402daf723bf089b53559f2378d38cc1b
 
 ### Preview
-<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz1.PNG" width="75%"></img>
-<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz2.PNG" width="75%"></img>
+<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz1.PNG" width="45%"></img>
+<img src="https://github.com/glegall7/datavizCATNAT/blob/master/previz2.PNG" width="45%"></img>
 
 ### Final vizualisation
 <img src="https://github.com/glegall7/datavizCATNAT/blob/master/Final.PNG" width="75%"></img>
