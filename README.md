@@ -12,7 +12,7 @@ This project show the repartition of natural disasters around the globe between 
 ## Mise en place du projet
 
 ### Sujet
-Les catastrophes naturelles étant liées au réchauffement climatique, il pourrait être intéressant de trouver une visualisation de celles-ci.
+Natural Disasters may be linked to global warming. Is it possible to show this correlations with visualisation of natural disasters from the previous century?
 
 ### Données nécessaires
 Données sur les catastrophes naturelles permettant de les localiser spatialement, temporellement et d’identifier le type des catastrophes naturelles étudiées. Nous avons déjà récupéré près de 8000 catastrophes naturelles avec leurs dates, lieux (plus ou moins précis), le type et les dégâts (humains et matériels). Les données seront a consolider car tout n’est pas présent.
@@ -28,8 +28,8 @@ https://www.catnat.net/donneesstats/telechargements/base-de-donnees-bd-catnat?fb
 - Nombre de personnes affectées par type de catastrophe naturelle : https://blockbuilder.org/jean-thomas-beaudoin/402daf723bf089b53559f2378d38cc1b
 
 ### Prévisualisation
-<img src="https://github.com/glegall7/datavizCATNAT/previz1.PNG" width="49%"></img>
-<img src="https://github.com/glegall7/datavizCATNAT/previz2.PNG" width="49%"></img>
+<img src="https://github.com/glegall7/datavizCATNAT/previz1.PNG" width="75%"></img>
+<img src="https://github.com/glegall7/datavizCATNAT/previz2.PNG" width="75%"></img>
 
 ### Visualisation finale
-<img src="https://github.com/glegall7/datavizCATNAT/Final.PNG" width="49%"></img>
+<img src="https://github.com/glegall7/datavizCATNAT/Final.PNG" width="75%"></img>
