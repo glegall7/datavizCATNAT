@@ -594,7 +594,8 @@ var couleurlist
 		}
 		svg.selectAll("circle")
 		.filter(function(d) { return (d.year < debut || d.year > fin)})
-		.style("opacity", 0)
+		.attr("fill-opacity", 0)
+		.attr("stroke-opacity", 0)
 		.attr("r", 2)
 
 		svg.selectAll("circle")
